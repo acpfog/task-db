@@ -5,7 +5,8 @@ CREATE DATABASE db;
 CREATE TABLE events (
   timestamp timestamp,
   type CHAR(16),
-  payload CHAR(256));
+  payload CHAR(256),
+  ip_address CHAR(16));
 
 ALTER USER "postgres" WITH PASSWORD 'master';
 CREATE USER "writer" WITH PASSWORD 'writer';
