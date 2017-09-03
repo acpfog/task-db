@@ -1,0 +1,18 @@
+
+CREATE DATABASE db;
+\connect db
+
+CREATE TABLE events (
+  timestamp timestamp,
+  type CHAR(64),
+  payload CHAR(64));
+
+CREATE USER writer WITH password 'writer';
+CREATE USER reader WITH password 'reader';
+
+GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO writer;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL PRIVILEGES ON TABLES TO writer;
+
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO reader;
+ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT SELECT ON TABLES TO reader;
+
